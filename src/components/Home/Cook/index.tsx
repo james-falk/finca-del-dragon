@@ -8,7 +8,7 @@ const Cook = () => {
         <section className='relative' id="cook-section">
             <div className="container mx-auto lg:max-w-screen-xl md:max-w-screen-md">
                 <div className='absolute right-0 bottom-[-18%] hidden lg:block'>
-                    <Image src={'/images/cook/burger.png'} alt="burger-image" width={463} height={622} />
+                    <Image src='/images/cook/burger.png' alt="burger-image" width={463} height={622} />
                 </div>
                 <div className='grid grid-cols-1 lg:grid-cols-12 my-16 space-x-5'>
                     <div className='col-span-6 flex justify-start'>

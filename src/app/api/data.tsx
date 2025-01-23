@@ -4,22 +4,22 @@ export const FeaturesData: {
   subheading: string;
 }[] = [
     {
-      imgSrc: '/images/features/featureOne.svg',
+      imgSrc: '/images/Features/featureOne.svg',
       heading: "Menu variations",
       subheading: "Sed ut perspiciatis unde omnis iste natus error",
     },
     {
-      imgSrc: '/images/features/featureTwo.svg',
+      imgSrc: '/images/Features/featureTwo.svg',
       heading: "Cooking warw",
       subheading: "Sed ut perspiciatis unde omnis iste natus error",
     },
     {
-      imgSrc: '/images/features/featureThree.svg',
+      imgSrc: '/images/Features/featureThree.svg',
       heading: "Best chef",
       subheading: "Sed ut perspiciatis unde omnis iste natus error",
     },
     {
-      imgSrc: '/images/features/featureFour.svg',
+      imgSrc: '/images/Features/featureFour.svg',
       heading: "Fast food",
       subheading: "Sed ut perspiciatis unde omnis iste natus error",
     }

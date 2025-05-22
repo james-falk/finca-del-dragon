@@ -6,9 +6,10 @@
   <img src="https://adminmart.github.io/template_api/images/website-template/Chefs-Kitchen-NextJs-Free-Landing-Page%20Template-Tailwind-Headless%20UI.jpg" />
 </a>
 
-<p style="text-align:center;"> This Next.js landing-page template offers a modern, ready-to-use foundation for developers looking to build high-performance websites quickly and efficiently. 
+
+<p style="text-align:center;"> Chef's Kitchen Free NextJs Landing Page Template is a ready-to-use website template built specifically for kitchen-related projects. Whether you're creating a chef’s portfolio, food blog, or restaurant site, this template gives developers a strong foundation to start from. It’s built using the latest technologies like React and Next.js, making it fast, modern, and developer-friendly.
 </p>
-<p style="text-align:center;"> Built using  App Directory routing , the landing page  follows the latest Next.js best practices and includes pre-designed, reusable components and layouts that can be easily customized to suit your Next.js project’s unique requirements. Whether you're developing a startup pitch page, product showcase, portfolio, or any other web-based presentation, this template helps streamline development by eliminating repetitive setup sections allowing you to focus on implementing core features and delivering value faster.
+<p style="text-align:center;"> It’s styled with Tailwind CSS, which makes it easy to change the look to fit your needs. The code is clean and simple to read, and the folder structure is organized so you can find things quickly. This makes it great for both beginners and experienced developers who want to save time.
 </p>
 
 ---

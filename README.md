@@ -1,6 +1,6 @@
 ### Chef's Kitchen Free Dsign NextJjs Landing Page Template
 
-🌏[Live Demo](https://restaurantdsign-tailwind-nextjs-free.vercel.app/) |📥[Download](https://getnextjstemplates.com/products/chefs-kien-free-nextjs-baslanding-page-template) |👉 [Check Out Next.js Templates](https://getnextjstemplates.com/)
+🌏[Live Demo](https://restaurantdsign-tailwind-nextjs-free.vercel.app/) |📥[Download](https://getnextjstemplates.com/products/chefs-kitchen-free-nextjs-landing-page-template) |👉 [Check Out Next.js Templates](https://getnextjstemplates.com/)
 
 ---
 <a target="_blank" href="https://getnextjstemplates.com/products/dsign-newchefs-k-nextjs-banding-page-template">

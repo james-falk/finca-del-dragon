@@ -1,6 +1,8 @@
 ### Chef's Kitchen Free Dsign NextJjs Landing Page Template
-[View Live Preview](https://restaurantdsign-tailwind-nextjs-free.vercel.app/) | [Download](https://getnextjstemplates.com/products/chefs-kitchen-free-nextjs-landing-page-template) | [CheckOut Nextjs Templates](https://getnextjstemplates.com/)
 
+🌏[Live Demo](https://restaurantdsign-tailwind-nextjs-free.vercel.app/) |📥[Download](https://getnextjstemplates.com/products/chefs-kien-free-nextjs-baslanding-page-template) |👉 [Check Out Next.js Templates](https://getnextjstemplates.com/)
+
+---
 <a target="_blank" href="https://getnextjstemplates.com/products/dsign-newchefs-k-nextjs-banding-page-template">
   <img src="https://adminmart.github.io/template_api/images/website-template/Chefs-Kitchen-NextJs-Free-Landing-Page%20Template-Tailwind-Headless%20UI.jpg" />
 </a>
@@ -14,7 +16,7 @@
 ---
 ## 💾 Installation Guide
 
-Welcome to the **Dsign Nextjs Landing Page Template**! This guide will walk you through the installation and setup process, so you can get started with building your custom web page in no time.
+Welcome to the **Chefs Kitchen Nextjs Landing Page Template**! This guide will walk you through the installation and setup process, so you can get started with building your custom web page in no time.
 
 ### 📝 Steps to Install
 
@@ -23,7 +25,7 @@ Welcome to the **Dsign Nextjs Landing Page Template**! This guide will walk you 
 The easiest way to get started is by cloning the repository or download the zip file. You can do this with the following command:
 
 ```bash
-git clone https://github.com/GetNextjsTemplates/restaurant-tailwind-nextjs-free.git
+git clone https://github.com/GetNextjsTemplates/chef-kitchen-nextjs-landing-page-template.git
 ```
 
 #### 2. **Install Dependencies**
@@ -62,7 +64,7 @@ This project is licensed under the MIT License - see the [LICENSE](https://getne
 
 If you find this template helpful, give it a ⭐️ and share it with your fellow developers. 
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/GetNextjsTemplates/restaurant-tailwind-nextjs-free&root-directory=package)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/GetNextjsTemplates/chef-kitchen-nextjs-landing-page-template&root-directory=package)
 
-Happy coding! 💻
+## Happy coding! 💻
 

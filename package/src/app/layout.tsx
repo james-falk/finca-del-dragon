@@ -1,9 +1,8 @@
 import { Poppins } from 'next/font/google'
 import './globals.css'
-import Header from '@/components/Layout/Header'
-import Footer from '@/components/Layout/Footer'
-// import { ThemeProvider } from "next-themes";
-import ScrollToTop from '@/components/ScrollToTop'
+import Header from '@/app/components/Layout/Header'
+import Footer from '@/app/components/Layout/Footer'
+import ScrollToTop from '@/app/components/ScrollToTop'
 const font = Poppins({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],

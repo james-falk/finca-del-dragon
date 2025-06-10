@@ -30,12 +30,27 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
   }
+
+  section {
+    @apply py-10;
+  }
+
+  h1 {
+    @apply text-black md:text-7xl sm:text-6xl text-5xl
+  }
+
+  h2 {
+    @apply text-black font-semibold sm:text-5xl text-4xl sm:leading-14 leading-11
+  }
+  
+}
+
+@layer utilities {
+  .container {
+    @apply max-w-7xl mx-auto w-full px-4;
+  }
 }
 
 html {
   scroll-behavior: smooth;
-}
-
-section {
-  @apply py-20;
 }

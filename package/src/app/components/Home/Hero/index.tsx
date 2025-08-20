@@ -4,49 +4,81 @@ import Link from 'next/link'
 
 const Hero = () => {
   return (
-    <section id='home-section' className='bg-gray-50'>
-      <div className='container xl:pt-7 pt-16'>
-        <div className='grid grid-cols-1 lg:grid-cols-12 items-center'>
-          <div className='lg:col-span-6'>
-            <h1 className='font-semibold mb-5 text-black lg:text-start text-center sm:leading-20 leading-16'>
-              Elevated Dining at Chef’s Kitchen
-            </h1>
-            <p className='text-black/55 text-lg font-normal mb-10 lg:text-start text-center'>
-              Indulge in an elegant culinary journey, crafted with locally
-              sourced ingredients and world-class flavors — served fresh, every
-              day.
-            </p>
-            <div className='flex flex-col sm:flex-row gap-5 items-center justify-center lg:justify-start'>
-              <Link href='/#menu'>
-                <button className='text-xl font-medium rounded-full text-white py-3 px-8 bg-primary hover:text-primary border border-primary hover:bg-transparent hover:cursor-pointer transition ease-in-out duration-300'>
-                  View Menu
+    <section id='home-section' className='relative bg-cream'>
+      {/* Farm field background pattern */}
+      <div className='absolute inset-0 opacity-10'>
+        <div className='w-full h-full' style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23228B22' fill-opacity='0.1'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3Ccircle cx='53' cy='7' r='1'/%3E%3Ccircle cx='7' cy='53' r='1'/%3E%3Ccircle cx='53' cy='53' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }}></div>
+      </div>
+      
+      <div className='container relative z-10 py-20 lg:py-32'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
+                                <div className='text-center lg:text-left order-2 lg:order-1'>
+                        <div className='flex flex-col items-center lg:items-start mb-8'>
+                          <div className='relative w-80 h-80 bg-white rounded-lg shadow-xl p-4 mb-6'>
+                            <Image
+                              src='/images/Logo/logo.png'
+                              alt='FINCA DEL DRAGON Logo'
+                              fill
+                              className='object-cover rounded-md'
+                              sizes='320px'
+                            />
+                          </div>
+                          <div className='max-w-80'>
+                            <p className='text-lg text-gray-700 mb-8 leading-relaxed'>
+                              Premium dragon fruit grown on the equator in Ecuador's perfect climate.
+                            </p>
+                          </div>
+                        </div>
+            <div className='flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start'>
+              <Link href='/#gallery'>
+                <button className='text-lg font-medium rounded-md text-white py-3 px-8 bg-primary hover:bg-dragon-dark border-2 border-primary hover:border-dragon-dark transition-all duration-300 shadow-md'>
+                  See our farm
                 </button>
               </Link>
-              <Link href='/#reserve'>
-                <button className='text-xl border border-primary rounded-full font-medium py-3 px-8 text-primary hover:text-white hover:bg-primary hover:cursor-pointer transition ease-in-out duration-300'>
-                  Reserve a Table
-                </button>
-              </Link>
+                                        <Link href='/#contact'>
+                            <button className='text-lg border-2 border-dragon-green rounded-md font-medium py-3 px-8 text-dragon-green hover:text-white hover:bg-dragon-green transition-all duration-300'>
+                              Contact Us
+                            </button>
+                          </Link>
             </div>
           </div>
-          <div className='lg:col-span-6 flex justify-center relative'>
-            <div className='flex bg-white p-2 gap-5 items-center bottom-10 left-10 rounded-xl absolute'>
-              <Image
-                src={'/images/hero/pizza.webp'}
-                alt='pizza-image'
-                width={68}
-                height={68}
-              />
-              <p className='text-lg font-normal'>
-                Over 50+ <br /> signature dishes
-              </p>
-            </div>
-            <Image
-              src='/images/hero/banner-image.webp'
-              alt='nothing'
-              width={1000}
-              height={805}
-            />
+          
+                                        <div className='order-1 lg:order-2 relative flex items-center justify-end p-4 pr-0'>
+                        {/* Main farm image - big size, shifted left */}
+                        <div className='relative bg-white rounded-lg shadow-xl overflow-hidden border-4 border-white w-full max-w-3xl transform scale-115 -translate-x-16'>
+                          <div className='aspect-[4/3] relative'>
+                            <Image
+                              src='/images/hero/hero-1.jpg'
+                              alt='FINCA DEL DRAGON - Dragon Fruit Farm in Ecuador'
+                              fill
+                              className='object-cover rotate-90 scale-140'
+                              sizes='(max-width: 768px) 100vw, 60vw'
+                            />
+
+                          </div>
+                        </div>
+          </div>
+        </div>
+        
+        {/* Farm stats */}
+        <div className='mt-16 grid grid-cols-2 md:grid-cols-4 gap-6'>
+          <div className='text-center bg-white p-6 rounded-lg shadow-sm'>
+            <div className='text-3xl font-bold text-primary mb-1'>50+</div>
+            <p className='text-gray-600 text-sm'>Acres Cultivated</p>
+          </div>
+          <div className='text-center bg-white p-6 rounded-lg shadow-sm'>
+            <div className='text-3xl font-bold text-primary mb-1'>10+</div>
+            <p className='text-gray-600 text-sm'>Years Experience</p>
+          </div>
+          <div className='text-center bg-white p-6 rounded-lg shadow-sm'>
+            <div className='text-3xl font-bold text-primary mb-1'>100%</div>
+            <p className='text-gray-600 text-sm'>Organic Methods</p>
+          </div>
+          <div className='text-center bg-white p-6 rounded-lg shadow-sm'>
+            <div className='text-3xl font-bold text-primary mb-1'>1000+</div>
+            <p className='text-gray-600 text-sm'>Happy Customers</p>
           </div>
         </div>
       </div>

@@ -26,125 +26,118 @@ const Footer: FC = () => {
   return (
     <footer className='pt-8'>
       <div className='container'>
-        <div className='grid grid-cols-1 sm:grid-cols-6 lg:gap-20 md:gap-24 sm:gap-12 gap-12 pb-10'>
-          <div className='col-span-2'>
-            <Logo />
-            <p className='text-sm font-medium text-grey my-5 max-w-70%'>
-              Open an account in minutes, get full financial control for much
-              longer.
-            </p>
-            <div className='flex gap-6 items-center'>
-              <Link
-                href='#'
-                className='group bg-white hover:bg-primary rounded-full shadow-xl p-3'>
-                <Icon
-                  icon='fa6-brands:facebook-f'
-                  width='16'
-                  height='16'
-                  className=' group-hover:text-white text-black'
-                />
-              </Link>
-              <Link
-                href='#'
-                className='group bg-white hover:bg-primary rounded-full shadow-xl p-3'>
-                <Icon
-                  icon='fa6-brands:instagram'
-                  width='16'
-                  height='16'
-                  className=' group-hover:text-white text-black'
-                />
-              </Link>
-              <Link
-                href='#'
-                className='group bg-white hover:bg-primary rounded-full shadow-xl p-3'>
-                <Icon
-                  icon='fa6-brands:x-twitter'
-                  width='16'
-                  height='16'
-                  className=' group-hover:text-white text-black'
-                />
-              </Link>
+        {/* Main Footer Content with Tan Background */}
+        <div className='bg-cream rounded-lg p-8 border-l-4 border-dragon-green mb-8'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
+            
+            {/* Farm Logo & Description */}
+            <div className='lg:col-span-1'>
+              <Logo />
+              <p className='text-sm font-medium text-gray-700 my-5'>
+                Premium dragon fruit grown sustainably in the fertile valleys of Ecuador. 
+                Experience the exotic taste of our organic pitaya.
+              </p>
+
             </div>
-          </div>
-          <div className='col-span-2'>
-            <div className='flex gap-20'>
-              {footerlink.map((product, i) => (
-                <div key={i} className='group relative col-span-2'>
-                  <p className='text-black text-xl font-semibold mb-9'>
-                    {product.section}
-                  </p>
-                  <ul>
-                    {product.links.map((item, i) => (
-                      <li key={i} className='mb-3'>
-                        <Link
-                          href={item.href}
-                          className='text-black/60 hover:text-black text-base font-normal mb-6'>
-                          {item.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className='col-span-2 sm:col-span-6 md:col-span-2'>
-            <div className='flex flex-col gap-5'>
-              <div className='flex'>
-                <Icon
-                  icon='solar:point-on-map-perspective-bold'
-                  className='text-primary text-3xl lg:text-2xl inline-block me-2'
-                />
-                <p className='text-black text-base'>
-                  925 Filbert Street Pennsylvania 18072
-                </p>
+
+            {/* Navigation Links */}
+            <div className='lg:col-span-2'>
+              <div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>
+                {footerlink.map((product, i) => (
+                  <div key={i} className='group relative'>
+                    <p className='text-primary text-lg font-bold mb-4'>
+                      {product.section}
+                    </p>
+                    <ul className='space-y-2'>
+                      {product.links.map((item, i) => (
+                        <li key={i}>
+                          <Link
+                            href={item.href}
+                            className='text-gray-600 hover:text-primary text-sm font-medium transition-colors duration-300'>
+                            {item.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
-              <Link href='tel:+1(909) 235-9814'>
-                <div className='flex'>
-                  <Icon
-                    icon='solar:phone-bold'
-                    className='text-primary text-3xl lg:text-2xl inline-block me-2'
-                  />
-                  <p className='text-black/60 hover:text-black text-base'>
-                    +1(909) 235-9814
-                  </p>
+            </div>
+
+            {/* Contact Information */}
+            <div className='lg:col-span-1 mb-3'>
+              <h3 className='text-primary text-lg font-bold mb-6'>Contact Us</h3>
+              <div className='space-y-12'>
+                <div className='mb-6'>
+                  <Link href='tel:+593255550123' className='group'>
+                    <div className='flex items-start gap-3'>
+                      <div className='w-10 h-10 bg-dragon-green/10 rounded-lg flex items-center justify-center group-hover:bg-dragon-green/20 transition-colors duration-300'>
+                        <Icon
+                          icon='mdi:phone'
+                          className='text-dragon-green text-lg'
+                        />
+                      </div>
+                      <div>
+                        <p className='text-xs text-gray-600 font-medium'>Phone</p>
+                        <p className='text-sm text-gray-800 group-hover:text-primary font-medium'>
+                          +593 (2) 555-0123
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
-              </Link>
-              <Link href='/'>
-                <div className='flex'>
-                  <Icon
-                    icon='solar:mailbox-bold'
-                    className='text-primary text-3xl lg:text-2xl inline-block me-2'
-                  />
-                  <p className='text-black/60 hover:text-black text-base'>
-                    info@gmail.com
-                  </p>
+                
+                <div className='mb-6'>
+                  <Link href='mailto:info@fincadeldragon.com' className='group'>
+                    <div className='flex items-start gap-3'>
+                      <div className='w-10 h-10 bg-dragon-green/10 rounded-lg flex items-center justify-center group-hover:bg-dragon-green/20 transition-colors duration-300'>
+                        <Icon
+                          icon='mdi:email'
+                          className='text-dragon-green text-lg'
+                        />
+                      </div>
+                      <div>
+                        <p className='text-xs text-gray-600 font-medium'>Email</p>
+                        <p className='text-sm text-gray-800 group-hover:text-primary font-medium'>
+                          info@fincadeldragon.com
+                        </p>
+                      </div>
+                    </div>
+                  </Link>
                 </div>
-              </Link>
+
+                <div className='mb-0'>
+                  <div className='flex items-start gap-3'>
+                    <div className='w-10 h-10 bg-dragon-green/10 rounded-lg flex items-center justify-center'>
+                      <Icon
+                        icon='mdi:map-marker'
+                        className='text-dragon-green text-lg'
+                      />
+                    </div>
+                    <div>
+                      <p className='text-xs text-gray-600 font-medium'>Location</p>
+                      <p className='text-sm text-gray-800'>
+                        Ecuador, South America
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div className='border-t border-grey/15 py-5 flex flex-col sm:flex-row justify-between sm:items-center gap-5'>
           <p className='text-sm text-black/70'>
-            @2025 - Chef's kitchen. All Rights Reserved by{' '}
-            <Link
-              href='https://getnextjstemplates.com/'
-              className='hover:text-primary hover:underline'>
-              GetNextjsTemplates
-            </Link>
+            @2025 - FINCA DEL DRAGON. All Rights Reserved. Premium Dragon Fruit from Ecuador.
           </p>
 
           <div className=''>
-            <Link
-              href='#'
-              className='text-sm text-black/70 px-5 border-r border-grey/15 hover:text-primary hover:underline'>
+            <span className='text-sm text-black/70 px-5 border-r border-grey/15'>
               Privacy policy
-            </Link>
-            <Link
-              href='#'
-              className='text-sm text-black/70 px-5 hover:text-primary hover:underline'>
+            </span>
+            <span className='text-sm text-black/70 px-5'>
               Terms & conditions
-            </Link>
+            </span>
           </div>
         </div>
       </div>

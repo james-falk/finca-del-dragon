@@ -8,10 +8,9 @@ import { FooterLinkType } from '@/app/types/footerlink'
 import { FullMenuType } from '@/app/types/fullmenu'
 
 const HeaderData: HeaderItem[] = [
-  { label: 'About Us', href: '/#aboutus' },
-  { label: 'Menu', href: '/#menu' },
-  { label: 'Reserve Table', href: '/#reserve' },
-  { label: 'Docs', href: '/documentation' },
+  { label: 'Home', href: '/' },
+  { label: 'About Us', href: '/#about' },
+  { label: 'Contact', href: '/#contact' },
 ]
 
 const FeaturesData: FeaturesType[] = [
@@ -125,22 +124,21 @@ const FullMenuData: FullMenuType[] = [
 
 const FooterLinkData: FooterLinkType[] = [
   {
-    section: 'Company',
+    section: 'Farm',
     links: [
       { label: 'Home', href: '/' },
-      { label: 'About Us', href: '/#aboutus' },
-      { label: 'Menu', href: '/#menu' },
-      { label: 'Reserve Table', href: '/#reserve' },
+      { label: 'About Us', href: '/#about' },
+      { label: 'Contact', href: '/#contact' },
     ],
   },
   {
-    section: 'Support',
+    section: 'Products',
     links: [
-      { label: 'Help/FAQ', href: '/' },
-      { label: 'Press', href: '/' },
-      { label: 'Affiliates', href: '/' },
-      { label: 'Hotel owners', href: '/' },
-      { label: 'Partners', href: '/' },
+      { label: 'Dragon Fruit', href: '/#about' },
+      { label: 'Organic Farming', href: '/#about' },
+      { label: 'Sustainability', href: '/#about' },
+      { label: 'Farm Tours', href: '/#contact' },
+      { label: 'Wholesale', href: '/#contact' },
     ],
   },
 ]

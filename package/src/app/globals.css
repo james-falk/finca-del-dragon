@@ -3,15 +3,24 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-primary: #df6853;
-  --color-grey: #363636;
+  --color-primary: #DC2626;
+  --color-secondary: #B91C1C;
+  --color-accent: #EF4444;
+  --color-dragon-red: #DC2626;
+  --color-dragon-dark: #991B1B;
+  --color-dragon-light: #FEE2E2;
+  --color-dragon-green: #16A34A;
+  --color-forest: #15803D;
+  --color-leaf: #22C55E;
+  --color-cream: #FEF7ED;
+  --color-grey: #374151;
 
   --spacing-60\%: 60%;
   --spacing-70\%: 70%;
 
   --tracking-widest: 0.515em;
 
-  --radius-Newsletter: 30px 400px 30px 30px;
+  --radius-Newsletter: 20px;
 }
 
 /*

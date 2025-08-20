@@ -1,16 +1,14 @@
 'use client'
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { Icon } from '@iconify/react'
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    fullname: '',
+    businessName: '',
     email: '',
-    phnumber: '',
-    outlet: '',
-    time: '',
-    people: '',
-    Message: '',
+    phoneNumber: '',
+    message: '',
   })
   const [submitted, setSubmitted] = useState(false)
   const [showThanks, setShowThanks] = useState(false)
@@ -18,11 +16,11 @@ const ContactForm = () => {
   const [isFormValid, setIsFormValid] = useState(false)
 
   useEffect(() => {
-    const isValid = Object.values(formData).every(
-      (value) => value.trim() !== ''
-    )
+    const requiredFields = ['businessName', 'email']
+    const isValid = requiredFields.every(field => formData[field as keyof typeof formData].trim() !== '')
     setIsFormValid(isValid)
   }, [formData])
+
   const handleChange = (e: any) => {
     const { name, value } = e.target
     setFormData((prevData) => ({
@@ -30,193 +28,146 @@ const ContactForm = () => {
       [name]: value,
     }))
   }
+
   const reset = () => {
-    formData.fullname = ''
-    formData.email = ''
-    formData.phnumber = ''
-    formData.outlet = ''
-    formData.time = ''
-    formData.people = ''
-    formData.Message = ''
+    setFormData({
+      businessName: '',
+      email: '',
+      phoneNumber: '',
+      message: '',
+    })
   }
+
   const handleSubmit = async (e: any) => {
     e.preventDefault()
     setLoader(true)
 
-    fetch('https://formsubmit.co/ajax/bhainirav772@gmail.com', {
-      method: 'POST',
-      headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify({
-        FullName: formData.fullname,
-        Email: formData.email,
-        PhoneNo: formData.phnumber,
-        Outlet: formData.outlet,
-        Time: formData.time,
-        People: formData.people,
-        Message: formData.Message,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          setSubmitted(true)
-          setShowThanks(true)
-          reset()
+    // Simulate form submission
+    setTimeout(() => {
+      setSubmitted(true)
+      setShowThanks(true)
+      setLoader(false)
+      reset()
 
-          setTimeout(() => {
-            setShowThanks(false)
-          }, 5000)
-        }
-
-        reset()
-      })
-      .catch((error) => {
-        setLoader(false)
-        console.log(error.message)
-      })
+      setTimeout(() => {
+        setShowThanks(false)
+      }, 5000)
+    }, 1000)
   }
+
   return (
-    <section id='reserve' className='scroll-mt-20'>
-      <div className='container'>
-        <p className='text-primary text-lg font-normal mb-3 tracking-widest uppercase text-center'>
-            reservation
-          </p>
-        <h2 className='mb-9 font-bold tracking-tight text-center'>
-          Dine With Us
-        </h2>
-        <div className='relative border px-6 py-2 rounded-3xl'>
-          <form
-            onSubmit={handleSubmit}
-            className='flex flex-wrap w-full m-auto justify-between'>
-            <div className='sm:flex gap-6 w-full'>
-              <div className='mx-0 my-2.5 flex-1'>
-                <label htmlFor='fname' className='pb-3 inline-block text-base'>
-                  Full Name
-                </label>
-                <input
-                  id='fname'
-                  type='text'
-                  name='fullname'
-                  value={formData.fullname}
-                  onChange={handleChange}
-                  placeholder='John Doe'
-                  className='w-full text-base px-4 rounded-2xl py-2.5 border-solid border transition-all duration-500 focus:border-primary focus:outline-0'
-                />
+    <section id='contact' className='relative py-20' style={{
+      backgroundImage: 'url(/images/background.jpeg)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundAttachment: 'fixed'
+    }}>
+      {/* Dark overlay for readability */}
+      <div className='absolute inset-0 bg-black/30'></div>
+      <div className='container relative z-10'>
+        <div className='text-center mb-16'>
+          <div className='bg-cream rounded-lg p-6 border-l-4 border-dragon-green inline-block'>
+            <h2 className='text-4xl font-bold text-primary mb-0'>
+              Contact Us
+            </h2>
+          </div>
+        </div>
+
+                            <div className='container'>
+                      {/* Contact Form */}
+                      <div className='bg-cream rounded-lg p-8 border-l-4 border-dragon-green'>
+            <h3 className='text-2xl font-bold text-primary mb-6'>Send us a Message</h3>
+            <form onSubmit={handleSubmit} className='space-y-4'>
+              <div className='grid md:grid-cols-2 gap-6'>
+                <div>
+                  <label htmlFor='businessName' className='block text-gray-700 font-medium mb-2'>
+                    Business Name *
+                  </label>
+                  <input
+                    id='businessName'
+                    type='text'
+                    name='businessName'
+                    value={formData.businessName}
+                    onChange={handleChange}
+                    placeholder='Your business name'
+                    className='w-full px-4 py-3 rounded-md border border-gray-300 focus:border-dragon-green focus:outline-none transition-colors'
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor='email' className='block text-gray-700 font-medium mb-2'>
+                    Email Address *
+                  </label>
+                  <input
+                    id='email'
+                    type='email'
+                    name='email'
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder='your@email.com'
+                    className='w-full px-4 py-3 rounded-md border border-gray-300 focus:border-dragon-green focus:outline-none transition-colors'
+                    required
+                  />
+                </div>
               </div>
-              <div className='mx-0 my-2.5 flex-1'>
-                <label htmlFor='email' className='pb-3 inline-block text-base'>
-                  Email Address
-                </label>
-                <input
-                  id='email'
-                  type='email'
-                  name='email'
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder='john.doe@example.com'
-                  className='w-full text-base px-4 rounded-2xl py-2.5 border-solid border transition-all duration-500 focus:border-primary focus:outline-0'
-                />
-              </div>
-              <div className='mx-0 my-2.5 flex-1'>
-                <label
-                  htmlFor='Phnumber'
-                  className='pb-3 inline-block text-base'>
+
+              <div>
+                <label htmlFor='phoneNumber' className='block text-gray-700 font-medium mb-2'>
                   Phone Number
                 </label>
                 <input
-                  id='Phnumber'
+                  id='phoneNumber'
                   type='tel'
-                  name='phnumber'
-                  placeholder='+1234567890'
-                  value={formData.phnumber}
+                  name='phoneNumber'
+                  value={formData.phoneNumber}
                   onChange={handleChange}
-                  className='w-full text-base px-4 rounded-2xl py-2.5 border-solid border transition-all duration-500 focus:border-primary focus:outline-0'
+                  placeholder=''
+                  className='w-full px-4 py-3 rounded-md border border-gray-300 focus:border-dragon-green focus:outline-none transition-colors'
                 />
               </div>
-            </div>
-            <div className='sm:flex gap-6 w-full'>              
-              <div className='mx-0 my-2.5 flex-1'>
-                <label htmlFor='email' className='pb-3 inline-block text-base'>
-                  Outlet
+
+              <div>
+                <label htmlFor='message' className='block text-gray-700 font-medium mb-2'>
+                  Tell us about what you do
                 </label>
-                <select
-                  name='outlet'
-                  id='outlet'
-                  value={formData.outlet}
+                <textarea
+                  id='message'
+                  name='message'
+                  value={formData.message}
                   onChange={handleChange}
-                  className='w-full text-base px-4 rounded-2xl py-2.5 border-solid border transition-all duration-500 focus:border-primary focus:outline-0'>
-                  <option value=''>Choose the Outlet</option>
-                  <option value='Downtown LA'>Downtown LA</option>
-                  <option value='Hollywood'>Hollywood</option>
-                  <option value='West Hollywood'>West Hollywood</option>
-                  <option value='Beverly Hills'>Beverly Hills</option>
-                  <option value='Santa Monica'>Santa Monica</option>
-                  <option value='Venice Beach'>Venice Beach</option>
-                </select>
+                  rows={5}
+                  placeholder='Describe your business'
+                  className='w-full px-4 py-3 rounded-md border border-gray-300 focus:border-dragon-green focus:outline-none transition-colors resize-none'></textarea>
               </div>
-              <div className='mx-0 my-2.5 flex-1'>
-                <label htmlFor='fname' className='pb-3 inline-block text-base'>
-                  Time
-                </label>
-                <input
-                  id='time'
-                  type='time'
-                  name='time'
-                  value={formData.time}
-                  onChange={handleChange}
-                  className='w-full text-base px-4 rounded-2xl py-2.5 border-solid border transition-all duration-500 focus:border-primary focus:outline-0'
-                />
-              </div>
-              <div className='mx-0 my-2.5 flex-1'>
-                <label htmlFor='email' className='pb-3 inline-block text-base'>
-                  NO. Of People
-                </label>
-                <input
-                  id='people'
-                  type='number'
-                  name='people'
-                  value={formData.people}
-                  onChange={handleChange}
-                  placeholder='2'
-                  className='w-full text-base px-4 rounded-2xl py-2.5 border-solid border transition-all duration-500 focus:border-primary focus:outline-0'
-                />
-              </div>
-            </div>
-            <div className='sm:flex gap-3 w-full'>
-              
-            </div>
-            <div className='w-full mx-0 my-2.5 flex-1'>
-              <label htmlFor='message' className='text-base inline-block'>
-                Message
-              </label>
-              <textarea
-                id='message'
-                name='Message'
-                value={formData.Message}
-                onChange={handleChange}
-                className='w-full mt-2 rounded-2xl px-5 py-3 border-solid border transition-all duration-500 focus:border-primary focus:outline-0'
-                placeholder='Anything else you wanna communicate'></textarea>
-            </div>
-            <div className='mx-0 my-2.5 w-full'>
+
               <button
                 type='submit'
                 disabled={!isFormValid || loader}
-                className={`border leading-none px-6 text-lg font-medium py-4 rounded-full 
-                    ${
-                      !isFormValid || loader
-                        ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                        : 'bg-primary border-primary text-white hover:bg-transparent hover:text-primary cursor-pointer'
-                    }`}>
-                Submit
+                className={`w-full py-4 px-8 rounded-md font-semibold text-lg transition-all duration-300 ${
+                  !isFormValid || loader
+                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    : 'bg-primary text-white hover:bg-dragon-dark shadow-sm'
+                }`}>
+                {loader ? (
+                  <div className='flex items-center justify-center gap-2'>
+                    <div className='w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin'></div>
+                    Sending...
+                  </div>
+                ) : (
+                  'Send Message'
+                )}
               </button>
-            </div>
-          </form>
-          {showThanks && (
-            <div className='text-white bg-primary rounded-full px-4 text-lg mb-4.5 mt-3 absolute flex items-center gap-2'>
-              Thanks! Your table is booked. See you soon.
-              <div className='w-3 h-3 rounded-full animate-spin border-2 border-solid border-white border-t-transparent'></div>
-            </div>
-          )}
+            </form>
+
+            {showThanks && (
+              <div className='mt-4 p-4 bg-green-50 border border-green-200 rounded-md'>
+                <div className='flex items-center gap-3 text-green-800'>
+                  <Icon icon='mdi:check-circle' className='text-xl' />
+                  <p className='font-medium'>Thank you! We'll get back to you soon about your dragon fruit inquiry.</p>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </section>

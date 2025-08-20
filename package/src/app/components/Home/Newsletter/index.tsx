@@ -1,87 +1,88 @@
 'use client'
-import Image from 'next/image'
 import { Icon } from '@iconify/react'
+import { useState } from 'react'
 
 const Newsletter = () => {
-  return (
-    <section className='relative overflow-hidden md:py-20'>
-      <div className='container'>
-        <div className='bg-primary rounded-Newsletter grid grid-cols-1 gap-y-10 gap-x-6 md:grid-cols-12 xl:gap-x-8'>
-          <div className='md:col-span-7'>
-            <div className='m-5 sm:m-10 lg:ml-32 lg:mt-20 lg:mb-20'>
-              <p className='text-lg font-normal text-white mb-3 tracking-widest'>
-                NEWSLETTER{' '}
-              </p>
-              <h2 className='text-white mb-8'>
-                Subscribe our <br /> newsletter.
-              </h2>
+  const [email, setEmail] = useState('')
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
-              <div>
-                <div className='relative text-white focus-within:text-white flex flex-row-reverse shadow-fi rounded-full'>
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (email) {
+      setIsSubmitted(true)
+      setEmail('')
+      setTimeout(() => setIsSubmitted(false), 3000)
+    }
+  }
+
+  return (
+    <section className='bg-forest py-20'>
+      <div className='container'>
+        <div className='bg-white rounded-lg shadow-lg overflow-hidden'>
+          <div className='grid md:grid-cols-2 gap-0'>
+            <div className='p-8 lg:p-12'>
+              <span className='inline-block px-4 py-2 bg-primary text-white rounded-md text-sm font-medium mb-4'>
+                📧 Stay Connected
+              </span>
+              <h2 className='text-3xl font-bold text-primary mb-4'>
+                Get Farm-Fresh Updates
+              </h2>
+              <p className='text-gray-700 mb-6 leading-relaxed'>
+                Join our family newsletter to receive updates about harvest seasons, 
+                new varieties, and special offers directly from our farm in Ecuador.
+              </p>
+
+              <form onSubmit={handleSubmit} className='space-y-4'>
+                <div>
                   <input
-                    type='Email address'
-                    name='q'
-                    className='pl-4 pr-16 py-4 text-sm w-full bg-white text-black rounded-full focus:outline-hidden focus:text-black'
-                    placeholder='john.doe@gmail.com'
-                    autoComplete='off'
+                    type='email'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className='w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:border-forest text-gray-700'
+                    placeholder='Enter your email address'
+                    required
                   />
-                  <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
-                    <button
-                      type='submit'
-                      className='p-1 bg-gray-900 hover:scale-110 duration-300 rounded-full hover:cursor-pointer'>
-                      <Icon
-                        icon='tabler:arrow-narrow-right'
-                        width='28'
-                        height='28'
-                        className='text-white '
-                      />
-                    </button>
-                  </div>
                 </div>
+                <button
+                  type='submit'
+                  className='w-full bg-primary text-white py-3 px-6 rounded-md font-medium hover:bg-dragon-dark transition duration-300 shadow-sm'>
+                  Subscribe to Farm Updates
+                </button>
+              </form>
+
+              {isSubmitted && (
+                <div className='mt-4 p-3 bg-green-50 border border-green-200 rounded-md'>
+                  <p className='text-green-800 flex items-center gap-2'>
+                    <Icon icon='mdi:check-circle' className='text-green-600' />
+                    ¡Gracias! Welcome to the FINCA DEL DRAGON family! 🌱
+                  </p>
+                </div>
+              )}
+
+              <p className='text-xs text-gray-500 mt-4'>
+                We respect your privacy. Unsubscribe at any time.
+              </p>
+            </div>
+            
+            <div className='bg-cream p-8 lg:p-12 flex items-center justify-center'>
+              <div className='text-center'>
+                <div className='text-8xl mb-6'>📮</div>
+                <h3 className='text-xl font-bold text-primary mb-3'>What You'll Receive:</h3>
+                <ul className='text-gray-700 space-y-2 text-left'>
+                  <li className='flex items-center gap-2'>
+                    <span className='text-forest'>✓</span> Harvest season updates
+                  </li>
+                  <li className='flex items-center gap-2'>
+                    <span className='text-forest'>✓</span> Farm family stories
+                  </li>
+                  <li className='flex items-center gap-2'>
+                    <span className='text-forest'>✓</span> Special bulk pricing
+                  </li>
+                  <li className='flex items-center gap-2'>
+                    <span className='text-forest'>✓</span> Dragon fruit recipes
+                  </li>
+                </ul>
               </div>
-            </div>
-          </div>
-          <div className='md:col-span-5 relative hidden md:block'>
-            <div>
-              <Image
-                src={'/images/Newsletter/soup.webp'}
-                alt='soup-image'
-                width={626}
-                height={602}
-                className='-mt-24'
-              />
-            </div>
-            <div className='absolute top-[78%]'>
-              <Image
-                src={'/images/Newsletter/onion.webp'}
-                alt='onion-image'
-                width={300}
-                height={122}
-              />
-            </div>
-            <div className='absolute top-[30%] right-[-23%]'>
-              <Image
-                src={'/images/Newsletter/lec.webp'}
-                alt='lettuce-image'
-                width={300}
-                height={122}
-              />
-            </div>
-            <div className='absolute bottom-[10%] left-[0%]'>
-              <Image
-                src={'/images/Newsletter/yellow.svg'}
-                alt='yellow-image'
-                width={59}
-                height={59}
-              />
-            </div>
-            <div className='absolute bottom-[20%] right-[20%]'>
-              <Image
-                src={'/images/Newsletter/blue.svg'}
-                alt='blue-image'
-                width={25}
-                height={25}
-              />
             </div>
           </div>
         </div>

@@ -1,6 +1,0 @@
-{
-  "buildCommand": "npm --prefix package run build",
-  "devCommand": "npm --prefix package run dev",
-  "installCommand": "npm --prefix package install",
-  "outputDirectory": "package/.next"
-}

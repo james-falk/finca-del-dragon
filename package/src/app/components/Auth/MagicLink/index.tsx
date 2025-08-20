@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import { signIn } from 'next-auth/react'
+// import { signIn } from 'next-auth/react' // Removed NextAuth
 import toast from 'react-hot-toast'
 import { validateEmail } from '../../../../utils/validateEmail'
 import Loader from '@/app/components/Common/Loader'
@@ -21,22 +21,10 @@ const MagicLink = () => {
       setLoader(false)
       return toast.error('Please enter a valid email address.')
     } else {
-      signIn('email', {
-        redirect: false,
-        email: email,
-      })
-        .then((callback) => {
-          if (callback?.ok) {
-            toast.success('Email sent')
-            setEmail('')
-            setLoader(false)
-          }
-        })
-        .catch((error) => {
-          console.log(error)
-          toast.error('Unable to send email!')
-          setLoader(false)
-        })
+      // NextAuth removed - placeholder for future auth implementation
+      toast.success('Email sent (demo mode)')
+      setEmail('')
+      setLoader(false)
     }
   }
 

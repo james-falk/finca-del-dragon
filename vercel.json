@@ -1,6 +1,6 @@
 {
-  "buildCommand": "cd package && npm run build",
-  "devCommand": "cd package && npm run dev",
-  "installCommand": "cd package && npm install",
+  "buildCommand": "npm --prefix package run build",
+  "devCommand": "npm --prefix package run dev",
+  "installCommand": "npm --prefix package install",
   "outputDirectory": "package/.next"
 }

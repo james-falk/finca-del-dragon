@@ -23,6 +23,14 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to view the site in your browser.
 
+## Deployment Pipeline
+
+This project uses automatic deployment:
+1. Push code to GitHub (main branch)
+2. Vercel automatically detects the push
+3. Vercel builds and deploys the latest version
+4. Live site updates automatically
+
 ## Tech Stack
 
 - Next.js

@@ -41,7 +41,7 @@ const Hero = () => {
                   src='/images/hero/hero-1.jpg'
                   alt='FINCA DEL DRAGON - Dragon Fruit Farm in Ecuador'
                   fill
-                  className='object-cover'
+                  className='object-contain p-2'
                   sizes='100vw'
                 />
               </div>

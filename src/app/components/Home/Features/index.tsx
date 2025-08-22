@@ -28,12 +28,26 @@ const Features = () => {
   ]
 
       return (
-    <section id='about' className='relative py-20' style={{
-      backgroundImage: 'url(/images/background.jpeg)',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundAttachment: 'fixed'
-    }}>
+    <section id='about' className='relative py-20'>
+      {/* Background image with responsive sizing */}
+      <div 
+        className='absolute inset-0 bg-center bg-fixed'
+        style={{
+          backgroundImage: 'url(/images/background.jpeg)',
+          backgroundSize: 'contain', // Show full image on mobile
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center'
+        }}>
+      </div>
+      {/* Desktop background overlay for cover effect */}
+      <div 
+        className='absolute inset-0 hidden md:block bg-center bg-fixed'
+        style={{
+          backgroundImage: 'url(/images/background.jpeg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}>
+      </div>
       {/* Dark overlay for readability */}
       <div className='absolute inset-0 bg-black/30'></div>
       <div className='container relative z-10'>

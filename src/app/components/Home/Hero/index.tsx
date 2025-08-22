@@ -50,7 +50,7 @@ const Hero = () => {
           
           {/* Buttons - Mobile */}
           <div className='flex flex-col gap-4 items-center w-full max-w-sm'>
-            <Link href='/#gallery' className='w-full'>
+            <Link href='/#about' className='w-full'>
               <button className='w-full text-lg font-medium rounded-md text-white py-3 px-8 bg-primary hover:bg-dragon-dark border-2 border-primary hover:border-dragon-dark transition-all duration-300 shadow-md'>
                 See our farm
               </button>
@@ -83,7 +83,7 @@ const Hero = () => {
               </div>
             </div>
             <div className='flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start'>
-              <Link href='/#gallery'>
+              <Link href='/#about'>
                 <button className='text-lg font-medium rounded-md text-white py-3 px-8 bg-primary hover:bg-dragon-dark border-2 border-primary hover:border-dragon-dark transition-all duration-300 shadow-md'>
                   See our farm
                 </button>

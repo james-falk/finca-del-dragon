@@ -40,6 +40,10 @@
     border-color: var(--color-gray-200, currentcolor);
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   section {
     @apply py-10;
   }

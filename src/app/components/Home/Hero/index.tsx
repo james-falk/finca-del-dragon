@@ -13,52 +13,102 @@ const Hero = () => {
       </div>
       
       <div className='container relative z-10 py-20 lg:py-32'>
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
-                                <div className='text-center lg:text-left order-2 lg:order-1'>
-                        <div className='flex flex-col items-center lg:items-start mb-8'>
-                          <div className='relative w-80 h-80 bg-white rounded-lg shadow-xl p-4 mb-6'>
-                            <Image
-                              src='/images/Logo/logo.png'
-                              alt='FINCA DEL DRAGON Logo'
-                              fill
-                              className='object-cover rounded-md'
-                              sizes='320px'
-                            />
-                          </div>
-                          <div className='max-w-80'>
-                            <p className='text-lg text-gray-700 mb-8 leading-relaxed'>
-                              Premium dragon fruit grown on the equator in Ecuador's perfect climate.
-                            </p>
-                          </div>
-                        </div>
+        {/* Mobile Layout - Logo, Text, Image stacked vertically */}
+        <div className='lg:hidden flex flex-col items-center text-center space-y-8'>
+          {/* Logo First - Mobile */}
+          <div className='relative w-64 h-64 bg-white rounded-lg shadow-xl p-4'>
+            <Image
+              src='/images/Logo/logo.png'
+              alt='FINCA DEL DRAGON Logo'
+              fill
+              className='object-contain rounded-md'
+              sizes='256px'
+            />
+          </div>
+          
+          {/* Text Second - Mobile */}
+          <div className='max-w-sm'>
+            <p className='text-lg text-gray-700 leading-relaxed'>
+              Premium dragon fruit grown on the equator in Ecuador's perfect climate.
+            </p>
+          </div>
+          
+          {/* Image Third - Mobile - Centered and properly sized */}
+          <div className='w-full max-w-sm mx-auto'>
+            <div className='relative bg-white rounded-lg shadow-xl overflow-hidden border-4 border-white'>
+              <div className='aspect-[4/3] relative'>
+                <Image
+                  src='/images/hero/hero-1.jpg'
+                  alt='FINCA DEL DRAGON - Dragon Fruit Farm in Ecuador'
+                  fill
+                  className='object-cover'
+                  sizes='100vw'
+                />
+              </div>
+            </div>
+          </div>
+          
+          {/* Buttons - Mobile */}
+          <div className='flex flex-col gap-4 items-center w-full max-w-sm'>
+            <Link href='/#gallery' className='w-full'>
+              <button className='w-full text-lg font-medium rounded-md text-white py-3 px-8 bg-primary hover:bg-dragon-dark border-2 border-primary hover:border-dragon-dark transition-all duration-300 shadow-md'>
+                See our farm
+              </button>
+            </Link>
+            <Link href='/#contact' className='w-full'>
+              <button className='w-full text-lg border-2 border-dragon-green rounded-md font-medium py-3 px-8 text-dragon-green hover:text-white hover:bg-dragon-green transition-all duration-300'>
+                Contact Us
+              </button>
+            </Link>
+          </div>
+        </div>
+
+        {/* Desktop Layout - Side by side */}
+        <div className='hidden lg:grid lg:grid-cols-2 gap-12 items-center'>
+          <div className='text-center lg:text-left'>
+            <div className='flex flex-col items-center lg:items-start mb-8'>
+              <div className='relative w-80 h-80 bg-white rounded-lg shadow-xl p-4 mb-6'>
+                <Image
+                  src='/images/Logo/logo.png'
+                  alt='FINCA DEL DRAGON Logo'
+                  fill
+                  className='object-contain rounded-md'
+                  sizes='320px'
+                />
+              </div>
+              <div className='max-w-80'>
+                <p className='text-lg text-gray-700 mb-8 leading-relaxed'>
+                  Premium dragon fruit grown on the equator in Ecuador's perfect climate.
+                </p>
+              </div>
+            </div>
             <div className='flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start'>
               <Link href='/#gallery'>
                 <button className='text-lg font-medium rounded-md text-white py-3 px-8 bg-primary hover:bg-dragon-dark border-2 border-primary hover:border-dragon-dark transition-all duration-300 shadow-md'>
                   See our farm
                 </button>
               </Link>
-                                        <Link href='/#contact'>
-                            <button className='text-lg border-2 border-dragon-green rounded-md font-medium py-3 px-8 text-dragon-green hover:text-white hover:bg-dragon-green transition-all duration-300'>
-                              Contact Us
-                            </button>
-                          </Link>
+              <Link href='/#contact'>
+                <button className='text-lg border-2 border-dragon-green rounded-md font-medium py-3 px-8 text-dragon-green hover:text-white hover:bg-dragon-green transition-all duration-300'>
+                  Contact Us
+                </button>
+              </Link>
             </div>
           </div>
           
-                                        <div className='order-1 lg:order-2 relative flex items-center justify-end p-4 pr-0'>
-                        {/* Main farm image - big size, shifted left */}
-                        <div className='relative bg-white rounded-lg shadow-xl overflow-hidden border-4 border-white w-full max-w-3xl transform scale-115 -translate-x-16'>
-                          <div className='aspect-[4/3] relative'>
-                            <Image
-                              src='/images/hero/hero-1.jpg'
-                              alt='FINCA DEL DRAGON - Dragon Fruit Farm in Ecuador'
-                              fill
-                              className='object-cover rotate-90 scale-140'
-                              sizes='(max-width: 768px) 100vw, 60vw'
-                            />
-
-                          </div>
-                        </div>
+          <div className='relative flex items-center justify-end p-4 pr-0'>
+            {/* Main farm image - big size, shifted left */}
+            <div className='relative bg-white rounded-lg shadow-xl overflow-hidden border-4 border-white w-full max-w-3xl transform scale-115 -translate-x-16'>
+              <div className='aspect-[4/3] relative'>
+                <Image
+                  src='/images/hero/hero-1.jpg'
+                  alt='FINCA DEL DRAGON - Dragon Fruit Farm in Ecuador'
+                  fill
+                  className='object-cover rotate-90 scale-140'
+                  sizes='60vw'
+                />
+              </div>
+            </div>
           </div>
         </div>
         

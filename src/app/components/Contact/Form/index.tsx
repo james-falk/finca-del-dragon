@@ -57,12 +57,12 @@ const ContactForm = () => {
 
   return (
     <section id='contact' className='relative py-20'>
-      {/* Background image with responsive sizing */}
+      {/* Mobile background image */}
       <div 
         className='absolute inset-0 bg-center bg-fixed'
         style={{
-          backgroundImage: 'url(/images/background.jpeg)',
-          backgroundSize: '200% 200%', // Double the size on mobile
+          backgroundImage: 'url(/images/mobile-background.jpeg)',
+          backgroundSize: '130%', // 30% zoom (130% size)
           backgroundRepeat: 'repeat', // Tile the image to fill the space
           backgroundPosition: 'center'
         }}>

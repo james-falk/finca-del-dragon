@@ -62,7 +62,7 @@ const ContactForm = () => {
         className='absolute inset-0 bg-center bg-fixed'
         style={{
           backgroundImage: 'url(/images/background.jpeg)',
-          backgroundSize: 'contain', // Show full image on mobile
+          backgroundSize: '200% 200%', // Double the size on mobile
           backgroundRepeat: 'repeat', // Tile the image to fill the space
           backgroundPosition: 'center'
         }}>

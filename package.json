@@ -1,0 +1,12 @@
+{
+  "name": "finca-del-dragon-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "cd package && npm run dev",
+    "build": "cd package && npm run build",
+    "start": "cd package && npm run start",
+    "lint": "cd package && npm run lint"
+  },
+  "workspaces": ["package"]
+}

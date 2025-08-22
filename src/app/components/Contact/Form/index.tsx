@@ -63,7 +63,7 @@ const ContactForm = () => {
         style={{
           backgroundImage: 'url(/images/background.jpeg)',
           backgroundSize: 'contain', // Show full image on mobile
-          backgroundRepeat: 'no-repeat',
+          backgroundRepeat: 'repeat', // Tile the image to fill the space
           backgroundPosition: 'center'
         }}>
       </div>

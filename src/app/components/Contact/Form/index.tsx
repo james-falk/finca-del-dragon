@@ -2,21 +2,31 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { Icon } from '@iconify/react'
+import emailjs from '@emailjs/browser'
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    businessName: '',
-    email: '',
-    phoneNumber: '',
+    user_name: '',
+    business_name: '',
+    phone_number: '',
+    business_email: '',
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
   const [showThanks, setShowThanks] = useState(false)
+  const [showError, setShowError] = useState(false)
   const [loader, setLoader] = useState(false)
   const [isFormValid, setIsFormValid] = useState(false)
 
+  // Initialize EmailJS
   useEffect(() => {
-    const requiredFields = ['businessName', 'email']
+    const publicKey = 'JconJl2oyPBkyGYPf' // Hardcoded for testing
+    console.log('EmailJS Public Key:', publicKey)
+    emailjs.init(publicKey)
+  }, [])
+
+  useEffect(() => {
+    const requiredFields = ['user_name', 'business_name', 'business_email', 'message']
     const isValid = requiredFields.every(field => formData[field as keyof typeof formData].trim() !== '')
     setIsFormValid(isValid)
   }, [formData])
@@ -31,9 +41,10 @@ const ContactForm = () => {
 
   const reset = () => {
     setFormData({
-      businessName: '',
-      email: '',
-      phoneNumber: '',
+      user_name: '',
+      business_name: '',
+      phone_number: '',
+      business_email: '',
       message: '',
     })
   }
@@ -41,18 +52,48 @@ const ContactForm = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault()
     setLoader(true)
+    setShowError(false)
+    setShowThanks(false)
 
-    // Simulate form submission
-    setTimeout(() => {
-      setSubmitted(true)
-      setShowThanks(true)
-      setLoader(false)
-      reset()
+    try {
+      const serviceId = 'finca_del_dragon' // Hardcoded for testing
+      const templateId = 'finca_del_dragon_contact' // Hardcoded for testing
+      const publicKey = 'JconJl2oyPBkyGYPf' // Hardcoded for testing
+      
+      console.log('EmailJS Config:', { serviceId, templateId, publicKey })
+      
+      const result = await emailjs.sendForm(
+        serviceId,
+        templateId,
+        e.target,
+        publicKey
+      )
 
+      console.log('EmailJS Result:', result)
+      
+      if (result.status === 200) {
+        console.log('✅ Email sent successfully!')
+        setSubmitted(true)
+        setShowThanks(true)
+        reset()
+        
+        setTimeout(() => {
+          setShowThanks(false)
+        }, 5000)
+      } else {
+        console.error('❌ EmailJS returned non-200 status:', result.status)
+        throw new Error('Failed to send email')
+      }
+    } catch (error) {
+      console.error('EmailJS Error:', error)
+      setShowError(true)
+      
       setTimeout(() => {
-        setShowThanks(false)
+        setShowError(false)
       }, 5000)
-    }, 1000)
+    } finally {
+      setLoader(false)
+    }
   }
 
   return (
@@ -91,58 +132,75 @@ const ContactForm = () => {
                       {/* Contact Form */}
                       <div className='bg-cream rounded-lg p-8 border-l-4 border-dragon-green'>
             <h3 className='text-2xl font-bold text-primary mb-6'>Send us a Message</h3>
-            <form onSubmit={handleSubmit} className='space-y-4'>
+            <form onSubmit={handleSubmit} className='space-y-4' style={{ pointerEvents: showThanks || showError ? 'none' : 'auto' }}>
               <div className='grid md:grid-cols-2 gap-6'>
                 <div>
-                  <label htmlFor='businessName' className='block text-gray-700 font-medium mb-2'>
+                  <label htmlFor='user_name' className='block text-gray-700 font-medium mb-2'>
+                    Your Name *
+                  </label>
+                  <input
+                    id='user_name'
+                    type='text'
+                    name='user_name'
+                    value={formData.user_name}
+                    onChange={handleChange}
+                    placeholder='Your full name'
+                    className='w-full px-4 py-3 rounded-md border border-gray-300 focus:border-dragon-green focus:outline-none transition-colors'
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor='business_name' className='block text-gray-700 font-medium mb-2'>
                     Business Name *
                   </label>
                   <input
-                    id='businessName'
+                    id='business_name'
                     type='text'
-                    name='businessName'
-                    value={formData.businessName}
+                    name='business_name'
+                    value={formData.business_name}
                     onChange={handleChange}
                     placeholder='Your business name'
                     className='w-full px-4 py-3 rounded-md border border-gray-300 focus:border-dragon-green focus:outline-none transition-colors'
                     required
                   />
                 </div>
+              </div>
+
+              <div className='grid md:grid-cols-2 gap-6'>
                 <div>
-                  <label htmlFor='email' className='block text-gray-700 font-medium mb-2'>
-                    Email Address *
+                  <label htmlFor='business_email' className='block text-gray-700 font-medium mb-2'>
+                    Business Email *
                   </label>
                   <input
-                    id='email'
+                    id='business_email'
                     type='email'
-                    name='email'
-                    value={formData.email}
+                    name='business_email'
+                    value={formData.business_email}
                     onChange={handleChange}
                     placeholder='your@email.com'
                     className='w-full px-4 py-3 rounded-md border border-gray-300 focus:border-dragon-green focus:outline-none transition-colors'
                     required
                   />
                 </div>
-              </div>
-
-              <div>
-                <label htmlFor='phoneNumber' className='block text-gray-700 font-medium mb-2'>
-                  Phone Number
-                </label>
-                <input
-                  id='phoneNumber'
-                  type='tel'
-                  name='phoneNumber'
-                  value={formData.phoneNumber}
-                  onChange={handleChange}
-                  placeholder=''
-                  className='w-full px-4 py-3 rounded-md border border-gray-300 focus:border-dragon-green focus:outline-none transition-colors'
-                />
+                <div>
+                  <label htmlFor='phone_number' className='block text-gray-700 font-medium mb-2'>
+                    Phone Number
+                  </label>
+                  <input
+                    id='phone_number'
+                    type='tel'
+                    name='phone_number'
+                    value={formData.phone_number}
+                    onChange={handleChange}
+                    placeholder=''
+                    className='w-full px-4 py-3 rounded-md border border-gray-300 focus:border-dragon-green focus:outline-none transition-colors'
+                  />
+                </div>
               </div>
 
               <div>
                 <label htmlFor='message' className='block text-gray-700 font-medium mb-2'>
-                  Tell us about what you do
+                  Message *
                 </label>
                 <textarea
                   id='message'
@@ -150,8 +208,9 @@ const ContactForm = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows={5}
-                  placeholder='Describe your business'
-                  className='w-full px-4 py-3 rounded-md border border-gray-300 focus:border-dragon-green focus:outline-none transition-colors resize-none'></textarea>
+                  placeholder='Tell us about your inquiry...'
+                  className='w-full px-4 py-3 rounded-md border border-gray-300 focus:border-dragon-green focus:outline-none transition-colors resize-none'
+                  required></textarea>
               </div>
 
               <button
@@ -174,10 +233,44 @@ const ContactForm = () => {
             </form>
 
             {showThanks && (
-              <div className='mt-4 p-4 bg-green-50 border border-green-200 rounded-md'>
-                <div className='flex items-center gap-3 text-green-800'>
-                  <Icon icon='mdi:check-circle' className='text-xl' />
-                  <p className='font-medium'>Thank you! We'll get back to you soon about your dragon fruit inquiry.</p>
+              <div className='fixed inset-0 bg-black/50 flex items-center justify-center z-50'>
+                <div className='bg-white rounded-lg p-8 max-w-md w-full mx-4 text-center'>
+                  <div className='flex items-center justify-center mb-4'>
+                    <div className='w-16 h-16 bg-green-100 rounded-full flex items-center justify-center'>
+                      <Icon icon='mdi:check-circle' className='text-3xl text-green-600' />
+                    </div>
+                  </div>
+                  <h3 className='text-xl font-bold text-gray-900 mb-2'>Message Sent Successfully!</h3>
+                  <p className='text-gray-600 mb-6'>Thank you! We will contact you soon.</p>
+                  <button
+                    onClick={() => {
+                      setShowThanks(false)
+                      setSubmitted(false)
+                    }}
+                    className='w-full bg-primary text-white py-3 px-6 rounded-md font-semibold hover:bg-dragon-dark transition-colors'
+                  >
+                    Send Another Message
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {showError && (
+              <div className='fixed inset-0 bg-black/50 flex items-center justify-center z-50'>
+                <div className='bg-white rounded-lg p-8 max-w-md w-full mx-4 text-center'>
+                  <div className='flex items-center justify-center mb-4'>
+                    <div className='w-16 h-16 bg-red-100 rounded-full flex items-center justify-center'>
+                      <Icon icon='mdi:alert-circle' className='text-3xl text-red-600' />
+                    </div>
+                  </div>
+                  <h3 className='text-xl font-bold text-gray-900 mb-2'>Error Sending Message</h3>
+                  <p className='text-gray-600 mb-6'>Sorry, there was an error sending your message. Please try again.</p>
+                  <button
+                    onClick={() => setShowError(false)}
+                    className='w-full bg-primary text-white py-3 px-6 rounded-md font-semibold hover:bg-dragon-dark transition-colors'
+                  >
+                    Try Again
+                  </button>
                 </div>
               </div>
             )}

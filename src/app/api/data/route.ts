@@ -16,27 +16,26 @@ const HeaderData: HeaderItem[] = [
 const FeaturesData: FeaturesType[] = [
   {
     imgSrc: '/images/Features/featureOne.svg',
-    heading: 'Elegant Dining Atmosphere',
+    heading: 'Premium Selection',
     subheading:
-      'Enjoy a warm, refined space perfect for intimate dinners or small group gatherings.',
-  },
-  {
-    imgSrc: '/images/Features/featureThree.svg',
-    heading: 'Signature Chef Creations',
-    subheading:
-      'Taste one-of-a-kind dishes crafted with passion by our top culinary team.',
+      'We offer a diverse selection of dragon fruit, including the classic white, vibrant purple, and sweet yellow varieties to satisfy every taste',
   },
   {
     imgSrc: '/images/Features/featureTwo.svg',
-    heading: 'Fresh, Local Ingredients',
+    heading: 'Ecuador Grown',
     subheading:
-      'We use locally sourced goods daily for unmatched taste and quality.',
+      'Located in the perfect climate of Ecuador, our farm benefits from ideal growing conditions that produce exceptional dragon fruit.',
+  },
+  {
+    imgSrc: '/images/Features/featureThree.svg',
+    heading: 'Expertly Prepared, Shipped, and Delivered',
+    subheading:
+      'Each dragon fruit is carefully selected and harvested at peak ripeness to guarantee the finest taste and nutritional value.',
   },
   {
     imgSrc: '/images/Features/featureFour.svg',
-    heading: 'Hassle-Free Reservations',
-    subheading:
-      'Reserve online in seconds or walk in anytime — we’re ready when you are.',
+    heading: 'Commitment to Quality',
+    subheading: 'We devote great attention and care to our farm\'s environment, fostering optimal conditions for the finest dragon fruit production',
   }
 ]
 
@@ -61,8 +60,9 @@ const ExpertChiefData: ExpertChiefType[] = [
 const GalleryImagesData: GalleryImagesType[] = [
   {
     src: '/images/Gallery/foodone.webp',
-    name: 'Caesar Salad(187 Kcal)',
+    name: 'Premium Selection',
     price: 35,
+    description: 'We offer a diverse selection of dragon fruit, including the classic white, vibrant purple, and sweet yellow varieties to satisfy every taste',
   },
   {
     src: '/images/Gallery/foodtwo.webp',
@@ -122,26 +122,7 @@ const FullMenuData: FullMenuType[] = [
   },
 ]
 
-const FooterLinkData: FooterLinkType[] = [
-  {
-    section: 'Farm',
-    links: [
-      { label: 'Home', href: '/' },
-      { label: 'About Us', href: '/#about' },
-      { label: 'Contact', href: '/#contact' },
-    ],
-  },
-  {
-    section: 'Products',
-    links: [
-      { label: 'Dragon Fruit', href: '/#about' },
-      { label: 'Organic Farming', href: '/#about' },
-      { label: 'Sustainability', href: '/#about' },
-      { label: 'Farm Tours', href: '/#contact' },
-      { label: 'Wholesale', href: '/#contact' },
-    ],
-  },
-]
+const FooterLinkData: FooterLinkType[] = []
 
 export const GET = () => {
   return NextResponse.json({

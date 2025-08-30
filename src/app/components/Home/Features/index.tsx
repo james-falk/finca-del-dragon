@@ -2,30 +2,25 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
+import { useState, useEffect } from 'react'
+import { FeaturesType } from '@/app/types/features'
 
 const Features = () => {
-  const farmFeatures = [
-    {
-      icon: '🌱',
-      heading: 'Header Text Here',
-      subheading: 'Description here'
-    },
-    {
-      icon: '🇪🇨',
-      heading: 'Ecuador Grown',
-      subheading: 'Located in the perfect climate of Ecuador, our farm benefits from ideal growing conditions that produce exceptional dragon fruit.'
-    },
-    {
-      icon: '🐉',
-      heading: 'Premium Quality',
-      subheading: 'Each dragon fruit is carefully selected and harvested at peak ripeness to guarantee the finest taste and nutritional value.'
-    },
-    {
-      icon: '🌍',
-      heading: 'Header Text Here',
-      subheading: 'Description here'
+  const [featuresData, setFeaturesData] = useState<FeaturesType[]>([])
+
+  useEffect(() => {
+    const fetchFeaturesData = async () => {
+      try {
+        const res = await fetch('/api/data')
+        if (!res.ok) throw new Error('Failed to fetch')
+        const data = await res.json()
+        setFeaturesData(data.FeaturesData)
+      } catch (error) {
+        console.error('Error fetching features data:', error)
+      }
     }
-  ]
+    fetchFeaturesData()
+  }, [])
 
       return (
     <section id='about' className='relative py-20'>
@@ -97,7 +92,7 @@ const Features = () => {
         </div>
 
         <div className='grid md:grid-cols-2 gap-8'>
-            {farmFeatures.map((feature, i) => {
+            {featuresData.map((feature, i) => {
               const imageFiles = ['gallery-1.jpeg', 'gallery-2.jpeg', 'gallery-3.jpg', 'gallery-4.jpg']
               return (
                 <div

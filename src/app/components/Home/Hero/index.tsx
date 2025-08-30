@@ -104,7 +104,7 @@ const Hero = () => {
                   src='/images/hero/hero-1.jpg'
                   alt='FINCA DEL DRAGON - Dragon Fruit Farm in Ecuador'
                   fill
-                  className='object-cover rotate-90 scale-140'
+                  className='object-cover'
                   sizes='60vw'
                 />
               </div>
@@ -112,25 +112,7 @@ const Hero = () => {
           </div>
         </div>
         
-        {/* Farm stats */}
-        <div className='mt-16 grid grid-cols-2 md:grid-cols-4 gap-6'>
-          <div className='text-center bg-white p-6 rounded-lg shadow-sm'>
-            <div className='text-3xl font-bold text-primary mb-1'>50+</div>
-            <p className='text-gray-600 text-sm'>Acres Cultivated</p>
-          </div>
-          <div className='text-center bg-white p-6 rounded-lg shadow-sm'>
-            <div className='text-3xl font-bold text-primary mb-1'>10+</div>
-            <p className='text-gray-600 text-sm'>Years Experience</p>
-          </div>
-          <div className='text-center bg-white p-6 rounded-lg shadow-sm'>
-            <div className='text-3xl font-bold text-primary mb-1'>100%</div>
-            <p className='text-gray-600 text-sm'>Organic Methods</p>
-          </div>
-          <div className='text-center bg-white p-6 rounded-lg shadow-sm'>
-            <div className='text-3xl font-bold text-primary mb-1'>1000+</div>
-            <p className='text-gray-600 text-sm'>Happy Customers</p>
-          </div>
-        </div>
+
       </div>
     </section>
   )

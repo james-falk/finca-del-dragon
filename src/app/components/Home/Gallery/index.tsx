@@ -2,56 +2,27 @@
 import Image from 'next/image'
 import Masonry from 'react-masonry-css'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Icon } from '@iconify/react'
+import { GalleryImagesType } from '@/app/types/galleryimage'
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [galleryData, setGalleryData] = useState<GalleryImagesType[]>([])
 
-  const dragonFruitGallery = [
-    {
-      id: 1,
-      title: 'Dragon Fruit Harvest',
-      description: 'Fresh picked at sunrise when the fruit is sweetest',
-      emoji: '🌅',
-      category: 'Harvest'
-    },
-    {
-      id: 2,
-      title: 'Our Cactus Fields',
-      description: 'Rows of dragon fruit cacti stretching across the valley',
-      emoji: '🌵',
-      category: 'Farm'
-    },
-    {
-      id: 3,
-      title: 'Organic Certification',
-      description: 'Proudly certified organic since 2015',
-      emoji: '📜',
-      category: 'Quality'
-    },
-    {
-      id: 4,
-      title: 'Hand Selection',
-      description: 'Every fruit is carefully selected by our farm team',
-      emoji: '👥',
-      category: 'Process'
-    },
-    {
-      id: 5,
-      title: 'Farm to Market',
-      description: 'Fresh from our fields to local markets',
-      emoji: '🚜',
-      category: 'Distribution'
-    },
-    {
-      id: 6,
-      title: 'Ecuador Landscape',
-      description: 'The beautiful Andes provide perfect growing conditions',
-      emoji: '🏔️',
-      category: 'Location'
+  useEffect(() => {
+    const fetchGalleryData = async () => {
+      try {
+        const res = await fetch('/api/data')
+        if (!res.ok) throw new Error('Failed to fetch')
+        const data = await res.json()
+        setGalleryData(data.GalleryImagesData)
+      } catch (error) {
+        console.error('Error fetching gallery data:', error)
+      }
     }
-  ]
+    fetchGalleryData()
+  }, [])
 
   return (
     <section id='gallery' className='bg-cream py-20'>
@@ -68,28 +39,35 @@ const Gallery = () => {
         </div>
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16'>
-          {dragonFruitGallery.map((item) => (
+          {galleryData.map((item, index) => (
             <div
-              key={item.id}
+              key={index}
               className='group cursor-pointer bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-300'
-              onClick={() => setSelectedImage(item.id.toString())}>
-              <div className='aspect-[4/3] bg-gradient-to-b from-dragon-green/10 to-primary/10 flex items-center justify-center p-8 group-hover:from-dragon-green/20 group-hover:to-primary/20 transition-all duration-300'>
-                <div className='text-center'>
-                  <div className='text-6xl mb-4 group-hover:scale-110 transition-transform duration-300'>
-                    {item.emoji}
-                  </div>
-                  <span className='inline-block px-3 py-1 bg-dragon-green text-white text-xs rounded-full mb-2'>
-                    {item.category}
-                  </span>
-                </div>
+              onClick={() => setSelectedImage(index.toString())}>
+              <div className='aspect-[4/3] relative overflow-hidden'>
+                <Image
+                  src={item.src}
+                  alt={item.name}
+                  fill
+                  className='object-cover group-hover:scale-105 transition-transform duration-300'
+                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                />
+                <div className='absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300'></div>
               </div>
               <div className='p-4'>
-                <h3 className='font-bold text-primary mb-2'>
-                  {item.title}
-                </h3>
-                <p className='text-gray-600 text-sm leading-relaxed'>
-                  {item.description}
-                </p>
+                <div className='flex justify-between items-start mb-2'>
+                  <h3 className='font-bold text-primary'>
+                    {item.name}
+                  </h3>
+                  <span className='text-dragon-green font-semibold'>
+                    ${item.price}
+                  </span>
+                </div>
+                {item.description && (
+                  <p className='text-gray-600 text-sm leading-relaxed'>
+                    {item.description}
+                  </p>
+                )}
               </div>
             </div>
           ))}

@@ -24,13 +24,13 @@ const FeaturesData: FeaturesType[] = [
     imgSrc: '/images/Features/featureTwo.svg',
     heading: 'Ecuador Grown',
     subheading:
-      'Located in the perfect climate of Ecuador, our farm benefits from ideal growing conditions that produce exceptional dragon fruit.',
+      'Located in the perfect climate of Ecuador, our farm benefits from ideal growing conditions that produce exceptional dragon fruit',
   },
   {
     imgSrc: '/images/Features/featureThree.svg',
     heading: 'Expertly Prepared, Shipped, and Delivered',
     subheading:
-      'Each dragon fruit is carefully selected and harvested at peak ripeness to guarantee the finest taste and nutritional value.',
+      'Each dragon fruit is carefully selected and harvested at peak ripeness to guarantee the finest taste and nutritional value',
   },
   {
     imgSrc: '/images/Features/featureFour.svg',

@@ -13,7 +13,7 @@ const ContactForm = () => {
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
-  const [showThanks, setShowThanks] = useState(false)
+  const [showThanks, setShowThanks] = useState<false | { timestamp: number }>(false)
   const [showError, setShowError] = useState(false)
   const [loader, setLoader] = useState(false)
   const [isFormValid, setIsFormValid] = useState(false)
@@ -74,12 +74,13 @@ const ContactForm = () => {
       if (result.status === 200) {
         console.log('✅ Email sent successfully!')
         setSubmitted(true)
-        setShowThanks(true)
+        setShowThanks({ timestamp: Date.now() })
         reset()
         
+        // Auto-hide after 10 seconds (5 seconds minimum + 5 seconds grace period)
         setTimeout(() => {
           setShowThanks(false)
-        }, 5000)
+        }, 10000)
       } else {
         console.error('❌ EmailJS returned non-200 status:', result.status)
         throw new Error('Failed to send email')
@@ -233,7 +234,30 @@ const ContactForm = () => {
             </form>
 
             {showThanks && (
-              <div className='fixed inset-0 bg-black/50 flex items-center justify-center z-50'>
+              <div 
+                className='fixed inset-0 bg-black/50 flex items-center justify-center z-50'
+                onClick={() => {
+                  // Only allow dismissal after 5 seconds
+                  const timeSinceShow = Date.now() - (showThanks as any).timestamp
+                  if (timeSinceShow >= 5000) {
+                    setShowThanks(false)
+                  }
+                }}
+                onMouseMove={() => {
+                  // Only allow dismissal after 5 seconds
+                  const timeSinceShow = Date.now() - (showThanks as any).timestamp
+                  if (timeSinceShow >= 5000) {
+                    setShowThanks(false)
+                  }
+                }}
+                onKeyDown={() => {
+                  // Only allow dismissal after 5 seconds
+                  const timeSinceShow = Date.now() - (showThanks as any).timestamp
+                  if (timeSinceShow >= 5000) {
+                    setShowThanks(false)
+                  }
+                }}
+              >
                 <div className='bg-white rounded-lg p-8 max-w-md w-full mx-4 text-center'>
                   <div className='flex items-center justify-center mb-4'>
                     <div className='w-16 h-16 bg-green-100 rounded-full flex items-center justify-center'>
@@ -241,16 +265,7 @@ const ContactForm = () => {
                     </div>
                   </div>
                   <h3 className='text-xl font-bold text-gray-900 mb-2'>Message Sent Successfully!</h3>
-                  <p className='text-gray-600 mb-6'>Thank you! We will contact you soon.</p>
-                  <button
-                    onClick={() => {
-                      setShowThanks(false)
-                      setSubmitted(false)
-                    }}
-                    className='w-full bg-primary text-white py-3 px-6 rounded-md font-semibold hover:bg-dragon-dark transition-colors'
-                  >
-                    Send Another Message
-                  </button>
+                  <p className='text-gray-600'>You will receive a confirmation email shortly.</p>
                 </div>
               </div>
             )}

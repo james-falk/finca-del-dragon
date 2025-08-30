@@ -11,8 +11,8 @@ const font = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'FINCA DEL DRAGON - Premium Dragon Fruit Farm in Ecuador',
-  description: 'Discover the finest dragon fruit from our sustainable farm in Ecuador. Experience the exotic taste of fresh, organically grown dragon fruit from FINCA DEL DRAGON.',
+  title: 'Finca del Dragon',
+  description: 'Discover the finest dragon fruit from our sustainable farm in Ecuador. Experience the exotic taste of fresh, organically grown dragon fruit from Finca del Dragon.',
   keywords: 'dragon fruit, Ecuador farm, organic fruit, pitaya, sustainable farming, exotic fruit',
   icons: {
     icon: '/favicon.ico',

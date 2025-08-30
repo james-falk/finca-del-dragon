@@ -16,12 +16,12 @@ const Hero = () => {
         {/* Mobile Layout - Logo, Text, Image stacked vertically */}
         <div className='lg:hidden flex flex-col items-center text-center space-y-8'>
           {/* Logo First - Mobile */}
-          <div className='relative w-64 h-64 bg-white rounded-lg shadow-xl p-4'>
+          <div className='relative w-64 h-64'>
             <Image
               src='/images/Logo/logo.png'
               alt='FINCA DEL DRAGON Logo'
               fill
-              className='object-contain rounded-md'
+              className='object-contain'
               sizes='256px'
             />
           </div>
@@ -67,12 +67,12 @@ const Hero = () => {
         <div className='hidden lg:grid lg:grid-cols-2 gap-12 items-center'>
           <div className='text-center lg:text-left'>
             <div className='flex flex-col items-center lg:items-start mb-8'>
-              <div className='relative w-80 h-80 bg-white rounded-lg shadow-xl p-4 mb-6'>
+              <div className='relative w-80 h-80 mb-6'>
                 <Image
                   src='/images/Logo/logo.png'
                   alt='FINCA DEL DRAGON Logo'
                   fill
-                  className='object-contain rounded-md'
+                  className='object-contain'
                   sizes='320px'
                 />
               </div>

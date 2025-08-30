@@ -7,10 +7,10 @@ const Logo: React.FC = () => {
       {/* Farm logo */}
       <div className='relative w-12 h-12'>
         <Image
-                                src='/images/Logo/logo.png'
+          src='/images/Logo/logo.png'
           alt='FINCA DEL DRAGON Logo'
           fill
-          className='object-contain rounded-lg shadow-sm'
+          className='object-contain'
           sizes='48px'
         />
       </div>

@@ -5,7 +5,7 @@ import { Metadata } from 'next'
 import ContactForm from './components/Contact/Form'
 
 export const metadata: Metadata = {
-  title: 'FINCA DEL DRAGON - Premium Dragon Fruit Farm',
+  title: 'Finca del Dragon',
 }
 
 export default function Home() {
